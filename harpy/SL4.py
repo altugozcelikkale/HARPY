@@ -88,6 +88,9 @@ class SL4(object):
             ndim=varDims.DataObj[i,0]
             if ndim>0:
                 varSetDict[self._variables[i]]=setNames.DataObj[[j - 1 for j in varSetPtr.DataObj[setPos:setPos + ndim, 0]]].tolist()
+                # Strip whitespace from name strings
+                for key,value in varSetDict.items():
+                    varSetDict[key] = [item.strip() for item in value]
                 setPos+=ndim
             else:
                 varSetDict[self._variables[i]]=[]

@@ -153,7 +153,7 @@ class Header(HeaderData):
     @HeaderLabel.setter
     def HeaderLabel(self, string70):
         if not isinstance(string70, str): raise Exception('Name not a string')
-        if not len(string70) <= 70: raise Exception('Header label has to be shorter than 70')
+        if not len(string70) <= 70: string70=string70[0:70] #raise Exception('Header label has to be shorter than 70')
         self._LongName=string70.ljust(70)
 
     @property
